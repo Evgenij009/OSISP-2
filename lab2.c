@@ -98,6 +98,8 @@ void AnalyzeDirectoryContent(char *DirectoryPath, char *FilesExtension, char *Ha
 			if (errno)
 				ProceedErrors(strerror(errno), DirectoryPath, Concat(HardLinkDirectoryPath, "/"));
 		}
+		if (closedir(Directory) == -1)
+			ProceedErrors(strerror(errno), DirectoryPath, Concat(HardLinkDirectoryPath, "/"));
 	}
 	else
 		ProceedErrors(strerror(errno), DirectoryPath, Concat(HardLinkDirectoryPath, "/"));
